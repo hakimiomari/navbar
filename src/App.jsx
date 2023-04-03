@@ -1,46 +1,33 @@
-import React from 'react'
-import './app.css'
-import { useState } from 'react';
+import React, { useState } from "react";
+import "./style.css";
+import { AiOutlineClose } from "react-icons/ai";
+import { BsFillGridFill } from "react-icons/bs";
+import Menu from "./Menu";
+import Login from "./Login";
 
 const App = () => {
-    const [isToggle, setIsToggle] = useState(false);
+  const [isToggle, setIsToggle] = useState(false);
   return (
-    <div className='app__navbar'>
-          <div className="app__navbar-logo">
-              <span>Kamran</span>
+    <div className="app__navbar">
+      <div className="app__navbar-logo">
+        <span>Navbar</span>
+      </div>
+      <Menu className="app__navbar-links" />
+      <Login />
+      <div className="app_navbar_menu">
+        <BsFillGridFill className="icons" onClick={() => setIsToggle(true)} />
+        {isToggle && (
+          <div className="app_navbar-container">
+            <AiOutlineClose
+              className="icons close_icons"
+              onClick={() => setIsToggle(false)}
+            />
+            <Menu className="app__navbar-container-links" />
           </div>
-          <ul className='app__navbar-links'>
-              <li><a href="#">Home</a></li>
-              <li><a href="#">About</a></li>
-              <li><a href="#">Menu</a></li>
-              <li><a href="#">Award</a></li>
-              <li><a href="#">Contact</a></li>
-
-          </ul>
-          <div className="app__navbar-login">
-              <a href="#">Register / login</a>
-              <div></div>
-              <a href="#">Book</a>
-          </div>
-          <div className="app_navbar_menu">
-              <i className="fa-solid fa-bars icons"    onClick={()=>setIsToggle(true)}></i>
-              {
-                  isToggle && (
-                      <div className='app_navbar-container'>
-                      <i className="fa-solid fa-xmark icons close_icons" onClick={() => setIsToggle(false)}></i>
-                    <ul className='app__navbar-container-links'>
-                        <li><a href="#">Home</a></li>
-                        <li><a href="#">About</a></li>
-                        <li><a href="#">Menu</a></li>
-                        <li><a href="#">Award</a></li>
-                        <li><a href="#">Contact</a></li>
-                    </ul>
-              </div>
-                  )
-             }
-          </div>
+        )}
+      </div>
     </div>
-  )
-}
+  );
+};
 
-export default App
+export default App;
