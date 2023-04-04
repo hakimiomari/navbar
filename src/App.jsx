@@ -17,7 +17,7 @@ const App = () => {
       <div className="app_navbar_menu">
         <BsFillGridFill className="icons" onClick={() => setIsToggle(true)} />
         {isToggle && (
-          <div className="app_navbar-container">
+          <div className="app_navbar-container ">
             <AiOutlineClose
               className="icons close_icons"
               onClick={() => setIsToggle(false)}
